@@ -7,3 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './user.component.css'
 })
 export class UserComponent {}
+
+// Component can be made by CLI with command -  ng g componentName
