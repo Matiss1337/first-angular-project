@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, input, computed } from '@angular/core'; /// Input is decorator, input is function to pass props with signal
 
 @Component({
     selector: 'app-user',
@@ -7,8 +7,16 @@ import { Component, Input } from '@angular/core';
     styleUrl: './user.component.css'
 })
 export class UserComponent {
-    @Input() avatar!: string; /// ! is used to tell that it will be initialized later
-    @Input() name!: string;
+    @Input({required: true}) avatar!: string; /// ! is used to tell that it will be initialized later
+    @Input({required: true}) name!: string; ///required will trow error if missed
+
+
+    // Signal aproach
+    // avatar = input.required<string>(); ///input<type>(initial value) if adding required we cant pass initial value
+    // name = input.required<string>();
+    // imagePath = computed(() => {
+    //     return `assets/users/${this.avatar()}`;
+    // })
 
     get imagePath() {
         return `assets/users/${this.avatar}`;
