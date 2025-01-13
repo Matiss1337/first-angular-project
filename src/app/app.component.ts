@@ -1,15 +1,18 @@
 import {Component} from '@angular/core';
 import {HeaderComponent} from "./header/header.component";
 import {UserComponent} from "./user/user.component";
+import {DUMMY_USERS} from "./dummy-users"; ///way to pass data to parent element
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [HeaderComponent, UserComponent],
+    imports:    [HeaderComponent, UserComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
 })
-export class AppComponent {}
+export class AppComponent {
+    users = DUMMY_USERS; ///way to pass data to parent element
+}
 
 /// @component is ts decorator that allows you to mark a class as an Angular component and provide additional metadata that determines how the component should be processed, instantiated, and used at runtime.
 
