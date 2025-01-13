@@ -1,6 +1,20 @@
 <div>
-    <button>
-        <img />
-        <span>Name</span>
+    <button (click)="onSelectUser()">
+        <img [src]="imagePath"/>
+        <span>{{selectedUser.name}}</span>
     </button>
 </div>
+
+<!--<span>{{selectedUser.name}}</span>-->
+<!--can use props variable in the component to pass data from parent to child component-->
+
+<!--Property Binding-->
+<!--<img [src]="'assets/users/' + selectedUser.avatar"/>-->
+<!--Wrap src in [] to bind the value of the src attribute to the expression 'assets/users/' + selectedUser.avatar using dynamic binding.-->
+
+<!--<img [src]="'assets/users/' + selectedUser.avatar" [alt]="selectedUser.name"/>-->
+<!--calculation will be done in ts file-->
+
+
+<!--ADDING EVENT HANDLERS-->
+<!--add event name with () and pass the function name to it-->
