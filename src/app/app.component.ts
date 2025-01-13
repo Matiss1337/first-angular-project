@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { HeaderComponent} from "./header.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+    selector: 'app-root',
+    standalone: true,
+    imports: [HeaderComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
 })
 export class AppComponent {}
 
@@ -17,3 +18,5 @@ export class AppComponent {}
 ///selector: 'app-root' is the name of the component that will be used in the html file
 
 /// templateUrl: './app.component.html' is the path to the html file
+
+/// To use other component inside here, we need to import them and add to imports array
