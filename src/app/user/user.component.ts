@@ -10,7 +10,7 @@ export class UserComponent {
     @Input({required: true}) id!: string;
     @Input({required: true}) avatar!: string; /// ! is used to tell that it will be initialized later
     @Input({required: true}) name!: string; ///required will trow error if missed
-    @Output() select = new EventEmitter(); ///Output is used to pass data to parent component /// Older approach
+    @Output() select = new EventEmitter<string>(); ///Output is used to pass data to parent component /// Older approach
     // select = output<string>(); ///Output is used to pass data to parent component and has eventEmiter automaticaly added /// Never feature
 
     // Signal aproach
