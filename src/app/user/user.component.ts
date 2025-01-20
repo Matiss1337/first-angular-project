@@ -1,4 +1,4 @@
-import { Component, Input, input, computed } from '@angular/core'; /// Input is decorator, input is function to pass props with signal
+import {Component, Input, input, computed, Output, EventEmitter, output} from '@angular/core'; /// Input is decorator, input is function to pass props with signal
 
 @Component({
     selector: 'app-user',
@@ -7,9 +7,11 @@ import { Component, Input, input, computed } from '@angular/core'; /// Input is 
     styleUrl: './user.component.css'
 })
 export class UserComponent {
+    @Input({required: true}) id!: string;
     @Input({required: true}) avatar!: string; /// ! is used to tell that it will be initialized later
     @Input({required: true}) name!: string; ///required will trow error if missed
-
+    @Output() select = new EventEmitter(); ///Output is used to pass data to parent component /// Older approach
+    // select = output<string>(); ///Output is used to pass data to parent component and has eventEmiter automaticaly added /// Never feature
 
     // Signal aproach
     // avatar = input.required<string>(); ///input<type>(initial value) if adding required we cant pass initial value
@@ -23,6 +25,7 @@ export class UserComponent {
     }
 
     onSelectUser() {
+        this.select.emit(this.id); ///emit is used to pass data to parent component
     }
 }
 
