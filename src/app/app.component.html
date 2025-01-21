@@ -2,23 +2,39 @@
 
 <main>
     <ul id="users">
-        <li>
-            <app-user [user]="users[0]" (select)="onSelectUser($event)"/>
-        </li>
-        <li>
-            <app-user [user]="users[1]" (select)="onSelectUser($event)"/>
-        </li>
-        <li>
-            <app-user [user]="users[2]" (select)="onSelectUser($event)"/>
-        </li>
-        <li>
-            <app-user [user]="users[3]" (select)="onSelectUser($event)"/>
-        </li>
-        <li>
-            <app-user [user]="users[4]" (select)="onSelectUser($event)"/>
-        </li>
+        @for (user of users; track user.id) {
+            <li>
+                <app-user [user]="user" (select)="onSelectUser($event)"/>
+            </li>
+        }
     </ul>
-    <app-tasks [name]="selectedUser.name"/>
+
+    @if (selectedUser) {
+        <app-tasks [name]="selectedUser.name"/>
+    } @else {
+        <p id="fallback">Select a user to see their tasks!</p>
+    }
 </main>
+
+<!--OLD WAY-->
+<!--    strucural directive-->
+<!--    <ul id="users">-->
+<!--        <li *ngFor="let user of users; trackBy: trackByUserId">-->
+<!--            <app-user [user]="user" (select)="onSelectUser($event)"/>-->
+<!--        </li>-->
+<!--    </ul>-->
+
+<!--    this has to go to ts file-->
+<!--    trackByUserId(index: number, user: User): string {-->
+<!--    return user.id;-->
+<!--    }-->
+
+<!--&lt;!&ndash; @if (selectedUser) { &ndash;&gt;-->
+<!--<app-tasks *ngIf="selectedUser; else fallback" [name]="selectedUser!.name"></app-tasks>-->
+<!--&lt;!&ndash; } @else { &ndash;&gt;-->
+<!--<ng-template #fallback>-->
+<!--    <p id="fallback">Select a user to see their tasks!</p>-->
+<!--</ng-template>-->
+<!--&lt;!&ndash; } &ndash;&gt;-->
 
 
