@@ -14,7 +14,7 @@
     </ul>
 
     @if (isAddingTask) {
-        <app-new-task (cancel)="onNewTaskClose()"/>
+        <app-new-task (cancel)="onNewTaskClose()" (add)="onAddTask($event)"/>
     }
 </section>
 
