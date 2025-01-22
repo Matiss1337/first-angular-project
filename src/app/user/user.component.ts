@@ -1,16 +1,5 @@
-import {Component, Input, input, computed, Output, EventEmitter, output} from '@angular/core'; /// Input is decorator, input is function to pass props with signal
-
-// type User = {
-//     id: string;
-//     name: string;
-//     avatar: string;
-// }
-
-interface User {
-    id: string;
-    name: string;
-    avatar: string;
-} ///interface is used to define the type of object
+import {Component, Input, Output, EventEmitter} from '@angular/core'; /// Input is decorator, input is function to pass props with signal
+import {User} from "./user.model";
 
 @Component({
     selector: 'app-user',
@@ -19,9 +8,8 @@ interface User {
     styleUrl: './user.component.css'
 })
 export class UserComponent {
-    @Input({required: true}) user!: User; ///Input is used to pass data to child component /// Older approach};
-
-    @Output() select = new EventEmitter<string>(); ///Output is used to pass data to parent component /// Older approach
+    @Input({required: true}) user!: User;
+    @Output() select = new EventEmitter<string>();
 
     get imagePath() {
         return `assets/users/${this.user.avatar}`;
