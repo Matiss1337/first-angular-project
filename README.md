@@ -32,7 +32,7 @@ INPUT and OUTPUT exsample between parent and child !!!!
 <!--Render users in a list-->
 <!--each app-user listens for click and if click happens in onSelectUser function we @output selected user-->
 <!--then by selected user we know which app-tasks to show-->
-<!--app tasks filters which items to show based by @Signals pased to it-->
+<!--app tasks filters which items to show based by @Signals passed to it-->
 
 ////////////////////////////////////////////////////////////////////////
 INPUT and OUTPUT exsample between parent and child !!!!

@@ -4,7 +4,7 @@
     <ul id="users">
         @for (user of users; track user.id) {
             <li>
-                <app-user [user]="user" (select)="onSelectUser($event)"/>
+                <app-user [selected]="user.id === selectedUserId" [user]="user" (select)="onSelectUser($event)"/>
             </li>
         }
     </ul>
@@ -15,11 +15,3 @@
         <p id="fallback">Select a user to see their tasks!</p>
     }
 </main>
-
-<!--Very Important basics stuff!!!-->
-<!--Render users in a list-->
-<!--each app user listens fro click and if click happens in  onSelectUser method we @output selected user-->
-<!--then by selected user we know which app-tasks to show-->
-<!--app tasks filters which items to show based on Signals pased to it-->
-
-
