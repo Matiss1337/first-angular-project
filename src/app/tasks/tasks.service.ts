@@ -32,7 +32,7 @@ export class TasksService {
         return this.tasks.filter((task) => task.userId === userId);
     }
 
-    onAddTask(taskData: NewTaskData, userId: string) {
+    addTask(taskData: NewTaskData, userId: string) {
         this.tasks.push({
             id: Math.random().toString(),
             userId: userId,

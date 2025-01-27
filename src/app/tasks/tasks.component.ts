@@ -22,17 +22,11 @@ export class TasksComponent {
         return this.tasksService.selectedUserTasks(this.userId);
     }
 
-    onCompleteTask(taskId: string) {}
-
     onNewTask() {
         this.isAddingTask = true;
     }
 
     onNewTaskClose() {
-        this.isAddingTask = false;
-    }
-
-    onAddTask(taskData: NewTaskData) {
         this.isAddingTask = false;
     }
 }
