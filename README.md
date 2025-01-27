@@ -8,6 +8,10 @@ terms
 @Output() select = new EventEmitter<string>(); - output to parent element
 computed - way to interact with available variables and react to state changes
 union - user!: string | undefined
+Content Projection - wrapping component in other component
+pipes -transforms data in template
+services - basicaly seperate logic accesable to other files (read, modify and delete)
+dependency injection (DI) - allows you to inject dependencies (like services) into components
 
 ////////////////////////////////////////////////////////////////////////
 INPUT and OUTPUT exsample between parent and child !!!!
@@ -70,6 +74,16 @@ For loop  //track tracks unique ids
 ////////////////////////////////////////////////////////////////////////
 Conditional rendering
 
+isAddingTask:boolean = false; ///TS
+
+onNewTask() {
+this.isAddingTask = true;
+} ///TS
+
+@if (isAddingTask) {
+<app-new-task/>
+} ///HTML
+
 @if (selectedUser) {
 <app-tasks [name]="selectedUser.name"/>
 } @else {
@@ -119,5 +133,54 @@ then event simply filters tasks with id provided and list updates
 onCompleteTask(taskId: string) {
 this.tasks = this.tasks.filter((task) => task.id !== taskId);
 } ///TS
+
+////////////////////////////////////////////////////////////////////////
+
+DIRECTIVES
+
+import {FormsModule} from "@angular/forms";
+
+[(ngModel)]="enteredTitle" -two way binding
+
+////////////////////////////////////////////////////////////////////////
+
+WRAPPING component in other component - Content Projection
+
+Wrapped component
+<app-card>
+content
+</app-card>
+
+Wrap Component
+<div>
+    <ng-content/>
+</div>
+
+
+////////////////////////////////////////////////////////////////////////
+
+PIPES
+
+<time>{{task.dueDate | date:'fullDate' }}</time>
+need to import import {DatePipe} from "@angular/common";
+
+////////////////////////////////////////////////////////////////////////
+
+Dependency Injection (DI)
+move all logic to xxx.service.ts and then inject it like this
+
+private taskService = inject(TasksService)
+
+<button (click)="onCompleteTask()">COMPLETE</button> ///html
+
+    private taskService = inject(TasksService)
+
+    onCompleteTask() {
+        this.taskService.removeTask(this.task.id);
+    } ///TS
+    
+        removeTask(taskId: string) {
+        this.tasks = this.tasks.filter((task) => task.id !== taskId);
+    }  ///Service TS
 
 ////////////////////////////////////////////////////////////////////////
